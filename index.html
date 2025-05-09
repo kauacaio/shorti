@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHORT! - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Botão de menu mobile -->
+    <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Overlay para menu mobile -->
+    <div class="overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-rocket"></i> SHORTI</h2>
+        </div>
+        
+        <div class="nav-menu">
+            <div class="nav-item">
+                <a href="#" class="nav-link active" data-page="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+            
+            <div class="nav-item">
+                <a href="#" class="nav-link" data-page="playbook">
+                    <i class="fas fa-book"></i>
+                    <span>Playbook</span>
+                </a>
+            </div>
+            
+            <div class="nav-item">
+                <a href="#" class="nav-link" data-page="documentos">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Documentos</span>
+                </a>
+            </div>
+            
+            <div class="nav-item">
+                <a href="#" class="nav-link" data-page="formularios">
+                    <i class="fas fa-edit"></i>
+                    <span>Formulários</span>
+                </a>
+            </div>
+            
+            <div class="nav-item">
+                <a href="#" class="nav-link" data-page="estoques">
+                    <i class="fas fa-boxes"></i>
+                    <span>Estoques</span>
+                </a>
+            </div>
+            
+            <div class="nav-item">
+                <a href="#" class="nav-link" data-page="custos">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Custos</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <button class="btn" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+                <span>Tema Escuro</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <div class="header">
+            <h1 id="page-title">Dashboard</h1>
+            <div class="header-actions">
+                <div class="greeting">Bem-vindo, <strong>Beta</strong></div>
+                <div class="user-avatar">
+                    <i class="fas fa-user-circle" style="font-size: 1.5rem; color: var(--primary);"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página Dashboard -->
+        <div id="dashboard" class="content-page active">
+            <div class="welcome-container">
+                <div class="welcome-content">
+                    <div class="time">
+                        <i class="fas fa-clock"></i>
+                        <span id="current-time"></span>
+                    </div>
+                    <h1>Bem-vindo ao <br><span style="color: var(--primary);">SHORTI</span></h1>
+                    <p class="greeting" id="greeting-text">Sua plataforma de gestão completa está pronta para uso.</p>
+                    <button class="btn-primary">
+                        <i class="fas fa-arrow-right"></i> Em desenvolvimento 
+                    </button>
+                </div>
+                <div class="welcome-graphic">
+                    <div class="logo">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página Playbook -->
+        <div id="playbook" class="content-page">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Playbook</h3>
+                    <button class="btn btn-sm">
+                        <i class="fas fa-plus"></i>
+                        Adicionar
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Passo</th>
+                                <th>Descrição</th>
+                                <th>Atualizado em</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Inicialização do sistema</td>
+                                <td>05/05/2023</td>
+                                <td>
+                                    <button class="btn btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Configuração inicial</td>
+                                <td>03/05/2023</td>
+                                <td>
+                                    <button class="btn btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página Documentos -->
+        <div id="documentos" class="content-page">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Documentos</h3>
+                    <button class="btn btn-sm">
+                        <i class="fas fa-upload"></i>
+                        Upload
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Tipo</th>
+                                <th>Tamanho</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Manual do Usuário.pdf</td>
+                                <td>PDF</td>
+                                <td>2.4 MB</td>
+                                <td>15/05/2023</td>
+                                <td>
+                                    <button class="btn btn-sm">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Política de Segurança.docx</td>
+                                <td>DOCX</td>
+                                <td>1.8 MB</td>
+                                <td>10/05/2023</td>
+                                <td>
+                                    <button class="btn btn-sm">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página Formulários -->
+        <div id="formularios" class="content-page">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Formulários</h3>
+                    <button class="btn btn-sm">
+                        <i class="fas fa-plus"></i>
+                        Criar Novo
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Status</th>
+                                <th>Respostas</th>
+                                <th>Última Atualização</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cadastro de Usuário</td>
+                                <td><span class="status-badge success">Ativo</span></td>
+                                <td>24</td>
+                                <td>08/05/2023</td>
+                                <td>
+                                    <button class="btn btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pesquisa de Satisfação</td>
+                                <td><span class="status-badge success">Ativo</span></td>
+                                <td>56</td>
+                                <td>05/05/2023</td>
+                                <td>
+                                    <button class="btn btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página Estoques -->
+        <div id="estoques" class="content-page">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Estoques</h3>
+                    <button class="btn btn-sm">
+                        <i class="fas fa-plus"></i>
+                        Adicionar Item
+                    </button>
+                </div>
+                <div class="estoque-container">
+                    <div class="card-categoria">
+                        <h4>Notebooks</h4>
+                        <div class="item-card">
+                            <h5>Notebook Dell XPS 15</h5>
+                            <p>Quantidade: 15</p>
+                            <p>Localização: Armazém A, Prateleira B2</p>
+                            <button class="btn btn-sm">
+                                <i class="fas fa-edit"></i>
+                                Editar
+                            </button>
+                        </div>
+                        <div class="item-card">
+                            <h5>MacBook Pro M2</h5>
+                            <p>Quantidade: 8</p>
+                            <p>Localização: Armazém A, Prateleira C1</p>
+                            <button class="btn btn-sm">
+                                <i class="fas fa-edit"></i>
+                                Editar
+                            </button>
+                        </div>
+                    </div>
+        
+                    <div class="card-categoria">
+                        <h4>Periféricos</h4>
+                        <div class="item-card">
+                            <h5>Mouse Sem Fio Logitech MX</h5>
+                            <p>Quantidade: 42</p>
+                            <p>Localização: Armazém B, Prateleira A3</p>
+                            <button class="btn btn-sm">
+                                <i class="fas fa-edit"></i>
+                                Editar
+                            </button>
+                        </div>
+                        <div class="item-card">
+                            <h5>Teclado Mecânico Keychron</h5>
+                            <p>Quantidade: 25</p>
+                            <p>Localização: Armazém B, Prateleira B1</p>
+                            <button class="btn btn-sm">
+                                <i class="fas fa-edit"></i>
+                                Editar
+                            </button>
+                        </div>
+                    </div>
+        
+                    <div class="card-categoria">
+                        <h4>Monitores</h4>
+                        <div class="item-card">
+                            <h5>Monitor Dell 27" 4K</h5>
+                            <p>Quantidade: 12</p>
+                            <p>Localização: Armazém C, Prateleira A2</p>
+                            <button class="btn btn-sm">
+                                <i class="fas fa-edit"></i>
+                                Editar
+                            </button>
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página Custos -->
+        <div id="custos" class="content-page">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Custos</h3>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <select class="form-select" id="mesFilter">
+                            <option value="todos">Todos os Meses</option>
+                            <option value="janeiro-2024">Janeiro 2024</option>
+                            <option value="janeiro-2025" selected>Janeiro 2025</option>
+                        </select>
+                        <button class="btn btn-sm" id="filtrarBtn">
+                            <i class="fas fa-filter"></i>
+                            Filtrar
+                        </button>
+                        <button class="btn btn-sm">
+                            <i class="fas fa-file-export"></i>
+                            Exportar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tabelas por mês -->
+                <div class="table-responsive month-table" id="janeiro-2024-table" data-mes="janeiro-2024" style="display: none;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Valor</th>
+                                <th>Descrição</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>DataDog Club</td>
+                                <td>R$ 1.200,00</td>
+                                <td>Monitoramento de clubes</td>
+                                <td>15/01/2024</td>
+                                <td>
+                                    <a href="/detalhes/datadog-club-jan24" class="btn btn-sm">
+                                        <i class="fas fa-search"></i>
+                                        Detalhes
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive month-table" id="janeiro-2025-table" data-mes="janeiro-2025">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Valor</th>
+                                <th>Descrição</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>DataDog Greenn</td>
+                                <td>R$ 1.500,00</td>
+                                <td>Monitoramento ambiental</td>
+                                <td>10/01/2025</td>
+                                <td>
+                                    <a href="https://docs.google.com/spreadsheets/d/16S9v3VwjtJ_A1ib3Aj10iWiS6x61YBeAveoo4fCUV8A/edit?gid=0#gid=0" class="btn btn-sm">
+                                        <i class="fas fa-search"></i>
+                                        Detalhes
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>DataDog Gdigital</td>
+                                <td>R$ 1.800,00</td>
+                                <td>Monitoramento digital</td>
+                                <td>05/01/2025</td>
+                                <td>
+                                    <a href="/detalhes/datadog-gdigital-jan25" class="btn btn-sm">
+                                        <i class="fas fa-search"></i>
+                                        Detalhes
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
