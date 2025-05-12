@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Corporativo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="greeting">
+        <h1 id="dynamic-greeting">Bom dia</h1>
+        <p>Recursos corporativos</p>
+      </div>
+      <div class="user-profile">
+        <div class="user-avatar" id="user-avatar">FS</div>
+      </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav class="navigation">
+      <button class="nav-btn active" onclick="loadSection('manuais')">
+        <span class="material-icons">description</span> Manuais
+      </button>
+      <button class="nav-btn" onclick="loadSection('tutoriais')">
+        <span class="material-icons">play_circle</span> Tutoriais
+      </button>
+    </nav>
+
+    <!-- Conteúdo Dinâmico -->
+    <main id="content-section">
+      <!-- Carregado via JavaScript -->
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

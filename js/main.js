@@ -1,97 +1,100 @@
- // Navegação entre páginas
- document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Remove a classe active de todos os links
-        document.querySelectorAll('.nav-link').forEach(el => {
-            el.classList.remove('active');
-        });
-        
-        // Adiciona a classe active apenas ao link clicado
-        this.classList.add('active');
-        
-        // Oculta todas as páginas de conteúdo
-        document.querySelectorAll('.content-page').forEach(page => {
-            page.classList.remove('active');
-        });
-        
-        // Mostra a página de conteúdo correspondente
-        const pageId = this.getAttribute('data-page');
-        document.getElementById(pageId).classList.add('active');
-        
-        // Atualiza o título da página
-        document.getElementById('page-title').textContent = this.querySelector('span').textContent;
-    });
-  });
-  
-  // Menu mobile toggle
-  const menuToggle = document.querySelector('.menu-toggle');
-  const sidebar = document.querySelector('.sidebar');
-  const overlay = document.querySelector('.overlay');
-  
-  menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
-  });
-  
-  overlay.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-    overlay.classList.remove('active');
-  });
-  
-  // Filtro de custos por mês
-  document.getElementById('filtrarBtn').addEventListener('click', () => {
-    const mesSelecionado = document.getElementById('mesFilter').value;
+// Navegação entre páginas
+function setupNavigation() {
+    const navMenu = document.querySelector('.nav-menu');
     
-    document.querySelectorAll('.month-table').forEach(table => {
-        if (mesSelecionado === 'todos' || table.getAttribute('data-mes') === mesSelecionado) {
-            table.style.display = 'block';
-        } else {
-            table.style.display = 'none';
-        }
-    });
-  });
-  
-  // Toggle de tema escuro/claro
-  function toggleTheme() {
+    if (navMenu) {
+        navMenu.addEventListener('click', (e) => {
+            const link = e.target.closest('.nav-link');
+            if (!link) return;
+            
+            e.preventDefault();
+            
+            // Atualizar navegação
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            link.classList.add('active');
+            
+            // Mostrar página correspondente
+            const pageId = link.dataset.page;
+            document.querySelectorAll('.content-page').forEach(page => {
+                page.classList.toggle('active', page.id === pageId);
+            });
+            
+            // Atualizar título
+            const pageTitle = document.getElementById('page-title');
+            if (pageTitle) {
+                pageTitle.textContent = link.querySelector('span').textContent;
+            }
+        });
+    }
+}
+
+// Menu mobile toggle
+function setupMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.overlay');
+    
+    if (menuToggle && sidebar && overlay) {
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    }
+}
+
+// Filtro de custos por mês
+function setupCostFilter() {
+    const filterBtn = document.getElementById('filtrarBtn');
+    
+    if (filterBtn) {
+        filterBtn.addEventListener('click', () => {
+            const mesSelecionado = document.getElementById('mesFilter').value;
+            
+            document.querySelectorAll('.month-table').forEach(table => {
+                if (mesSelecionado === 'todos' || table.dataset.mes === mesSelecionado) {
+                    table.hidden = false;
+                } else {
+                    table.hidden = true;
+                }
+            });
+        });
+    }
+}
+
+// Toggle de tema escuro/claro
+function toggleTheme() {
     document.body.classList.toggle('dark-theme');
     
     // Atualiza o texto do botão
     const themeBtn = document.querySelector('.sidebar-footer .btn');
-    const icon = themeBtn.querySelector('i');
-    const text = themeBtn.querySelector('span');
-    
-    if (document.body.classList.contains('dark-theme')) {
-        icon.classList.replace('fa-moon', 'fa-sun');
-        text.textContent = 'Tema Claro';
-    } else {
-        icon.classList.replace('fa-sun', 'fa-moon');
-        text.textContent = 'Tema Escuro';
-    }
-  }
-  
-  // Atualizar saudação conforme horário
-  function updateGreeting() {
-    const hour = new Date().getHours();
-    const greetingEl = document.getElementById('greeting-text');
-    let greeting = '';
-    
-    if (hour >= 5 && hour < 12) {
-        greeting = 'Bom dia! Um ótimo dia de trabalho começa agora.';
-    } else if (hour >= 12 && hour < 18) {
-        greeting = 'Boa tarde! Aproveite sua produtividade vespertina.';
-    } else {
-        greeting = 'Boa noite! Hora de revisar os resultados do dia.';
+    if (themeBtn) {
+        const icon = themeBtn.querySelector('i');
+        const text = themeBtn.querySelector('span');
+        
+        if (document.body.classList.contains('dark-theme')) {
+            icon.classList.replace('fa-moon', 'fa-sun');
+            text.textContent = 'Tema Claro';
+        } else {
+            icon.classList.replace('fa-sun', 'fa-moon');
+            text.textContent = 'Tema Escuro';
+        }
     }
     
-    greetingEl.textContent = greeting;
-  }
-  
-  // Atualizar horário atual
-  function updateCurrentTime() {
-    const now = new Date();
+    // Salva preferência no localStorage
+    localStorage.setItem('darkTheme', document.body.classList.contains('dark-theme'));
+}
+
+// Atualizar horário atual
+function updateCurrentTime() {
     const timeEl = document.getElementById('current-time');
+    if (!timeEl) return;
+    
+    const now = new Date();
     const options = { 
         weekday: 'long', 
         day: 'numeric', 
@@ -101,12 +104,78 @@
     };
     
     timeEl.textContent = now.toLocaleDateString('pt-BR', options);
-  }
-  
-  // Inicialização
-  document.addEventListener('DOMContentLoaded', () => {
+}
+
+// Saudação dinâmica
+function updateGreeting() {
+    const hour = new Date().getHours();
+    let greeting = "Bom dia,";
+    
+    if (hour >= 12 && hour < 18) greeting = "Boa tarde,";
+    if (hour >= 18) greeting = "Boa noite,";
+    
+    // Atualiza todos os elementos de saudação
+    document.querySelectorAll('#greeting-text, #dynamic-greeting').forEach(el => {
+        if (el.id === 'greeting-text') {
+            el.textContent = greeting.replace(',', '!') + ' Sua plataforma de gestão completa está pronta para uso.';
+        } else {
+            el.textContent = greeting;
+        }
+    });
+}
+
+// Configuração do modal de relatórios
+function setupReportsModal() {
+    const reportsModal = document.getElementById('reportsModal');
+    const reportsBtn = document.getElementById('reportsBtn');
+    const closeModal = document.getElementById('closeModal');
+    
+    if (reportsBtn && reportsModal && closeModal) {
+        reportsBtn.addEventListener('click', () => {
+            reportsModal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', () => {
+            reportsModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === reportsModal) {
+                reportsModal.style.display = 'none';
+            }
+        });
+    }
+}
+
+// Carregar tema salvo
+function loadThemePreference() {
+    const darkTheme = localStorage.getItem('darkTheme') === 'true';
+    if (darkTheme) {
+        document.body.classList.add('dark-theme');
+        
+        // Atualiza o botão do tema
+        const themeBtn = document.querySelector('.sidebar-footer .btn');
+        if (themeBtn) {
+            const icon = themeBtn.querySelector('i');
+            const text = themeBtn.querySelector('span');
+            icon.classList.replace('fa-moon', 'fa-sun');
+            text.textContent = 'Tema Claro';
+        }
+    }
+}
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', () => {
+    setupNavigation();
+    setupMobileMenu();
+    setupCostFilter();
+    setupReportsModal();
+    loadThemePreference();
+    
     updateGreeting();
     updateCurrentTime();
     setInterval(updateCurrentTime, 60000);
-  });
-  
+});
+
+// Expor função toggleTheme para o escopo global
+window.toggleTheme = toggleTheme;

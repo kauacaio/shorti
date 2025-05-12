@@ -1,0 +1,130 @@
+:root {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --muted: #64748b;
+    --border: #e2e8f0;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  
+  .app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    min-height: 100vh;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .greeting h1 {
+    font-weight: 500;
+    font-size: 1.75rem;
+    color: var(--text);
+  }
+  
+  .greeting p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  /* Main Grid */
+  .shortcuts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.25rem;
+  }
+  
+  .shortcut-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.25s ease;
+    border: 1px solid var(--border);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  
+  .shortcut-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border-color: var(--primary);
+  }
+  
+  .shortcut-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem;
+    background: var(--bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.5rem;
+  }
+  
+  .shortcut-title {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .shortcut-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .shortcuts-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .greeting h1 {
+      font-size: 1.5rem;
+    }
+  }
