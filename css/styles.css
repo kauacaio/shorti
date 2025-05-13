@@ -34,7 +34,7 @@
   --sidebar-width: 280px;
 }
 
-/* Reset e Base */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -68,69 +68,7 @@ h2 { font-size: 2rem; }
 h3 { font-size: 1.5rem; }
 h4 { font-size: 1.25rem; }
 
-/* Layout Principal */
-.main-content {
-  margin-left: var(--sidebar-width);
-  flex: 1;
-  padding: 2.5rem;
-  min-height: 100vh;
-  transition: var(--transition);
-}
-
-/* Componentes */
-.card {
-  background: var(--light);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  transition: var(--transition);
-}
-
-.card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition: var(--transition);
-  border: none;
-  background: var(--primary);
-  color: var(--light);
-  box-shadow: var(--shadow);
-}
-
-.btn:hover {
-  background: var(--primary-dark);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
-}
-
-.btn-sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-}
-
-.btn i {
-  margin-right: 0.5rem;
-}
-
-/* Sidebar e Navegação */
+/* Sidebar */
 .sidebar {
   width: var(--sidebar-width);
   height: 100vh;
@@ -205,6 +143,15 @@ h4 { font-size: 1.25rem; }
   margin-top: auto;
 }
 
+/* Conteúdo principal */
+.main-content {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  padding: 2.5rem;
+  min-height: 100vh;
+  transition: var(--transition);
+}
+
 /* Header */
 .header {
   display: flex;
@@ -230,16 +177,26 @@ h4 { font-size: 1.25rem; }
   color: var(--gray-dark);
 }
 
-.user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--primary);
+/* Cards */
+.card {
+  background: var(--light);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 500;
+  margin-bottom: 1.5rem;
 }
 
 /* Tabelas */
@@ -271,6 +228,54 @@ tr:hover {
   background-color: rgba(67, 97, 238, 0.03);
 }
 
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  background: var(--primary);
+  color: var(--light);
+  box-shadow: var(--shadow);
+}
+
+.btn:hover {
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn i {
+  margin-right: 0.5rem;
+}
+
+/* Formulários */
+.form-select {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-light);
+  font-family: var(--font-sans);
+  background-color: var(--light);
+  transition: var(--transition);
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+}
+
 /* Grid de estoque */
 .estoque-container {
   display: grid;
@@ -292,7 +297,7 @@ tr:hover {
   transform: translateY(-3px);
 }
 
-.card-categoria h3 {
+.card-categoria h4 {
   margin-bottom: 1rem;
   color: var(--primary-dark);
 }
@@ -305,7 +310,7 @@ tr:hover {
   border-bottom: 1px solid var(--gray-light);
 }
 
-.item-card h4 {
+.item-card h5 {
   margin-bottom: 0.5rem;
   color: var(--dark);
 }
@@ -341,6 +346,7 @@ tr:hover {
   justify-content: center;
   position: relative;
   overflow: hidden;
+  /* Adicionando a transição de gradiente */
   background-size: 200% 200%;
   animation: gradientAnimation 5s infinite alternate;
 }
@@ -368,10 +374,12 @@ tr:hover {
       transform: translate(-50%, -50%) scale(1);
       opacity: 0.8;
   }
+
   50% {
       transform: translate(-50%, -50%) scale(1.1);
       opacity: 1;
   }
+
   100% {
       transform: translate(-50%, -50%) scale(1);
       opacity: 0.8;
@@ -389,7 +397,7 @@ tr:hover {
   align-items: center;
   justify-content: center;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  margin-bottom: 2rem; /* Aumentando o espaçamento abaixo do logo */
 }
 
 .logo i {
@@ -400,7 +408,7 @@ tr:hover {
 .time {
   font-size: 0.9rem;
   color: var(--gray);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem; /* Reduzindo um pouco o espaçamento abaixo da hora */
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -424,12 +432,16 @@ tr:hover {
   gap: 0.4rem;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 10px rgba(74, 107, 255, 0.25);
-  margin-top: 1rem;
+  margin-top: 1rem; /* Adicionando espaço acima do botão */
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
   box-shadow: 0 5px 12px rgba(74, 107, 255, 0.35);
+}
+
+.btn-primary i {
+  font-size: 1.1rem;
 }
 
 /* Menu mobile */
@@ -513,119 +525,6 @@ tr:hover {
   color: var(--danger);
 }
 
-/* Dash do TI */
-.app-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
-}
-
-.dash-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--gray-light);
-}
-
-.shortcuts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.25rem;
-}
-
-.shortcut-card {
-  background: var(--light);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: all 0.25s ease;
-  border: 1px solid var(--gray-light);
-  text-align: center;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  cursor: pointer;
-}
-
-.shortcut-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border-color: var(--primary);
-}
-
-.shortcut-icon {
-  width: 48px;
-  height: 48px;
-  margin: 0 auto 1rem;
-  background: var(--gray-light);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary);
-  font-size: 1.5rem;
-}
-
-.shortcut-title {
-  font-weight: 500;
-  font-size: 1rem;
-  margin-bottom: 0.25rem;
-}
-
-.shortcut-desc {
-  font-size: 0.8rem;
-  color: var(--gray-dark);
-}
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-content {
-  background: var(--light);
-  padding: 2rem;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 800px;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-}
-
-.close-modal {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--gray-dark);
-  transition: var(--transition);
-}
-
-.close-modal:hover {
-  color: var(--danger);
-}
-
-.modal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
 /* Tema escuro */
 .dark-theme {
   --dark: #f8f9fa;
@@ -657,7 +556,7 @@ tr:hover {
   border-bottom-color: var(--gray);
 }
 
-.dark-theme .item-card h4 {
+.dark-theme .item-card h5 {
   color: var(--dark);
 }
 
@@ -733,6 +632,71 @@ tr:hover {
   .welcome-content {
       padding: 2rem;
   }
+  
+  /* Mensagem de desenvolvimento */
+  .dev-message {
+    display: block;
+    background-color: var(--warning);
+    color: var(--dark);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: var(--shadow);
+  }
+  
+  /* Transformar tabelas em cards */
+  .table-responsive table {
+    display: none; /* Esconde a tabela em mobile */
+  }
+  
+  .table-cards {
+    display: block;
+  }
+  
+  .card-row {
+    background: var(--light);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+  }
+  
+  .card-row-header {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+  }
+  
+  .card-row-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-row-label {
+    font-weight: 500;
+    color: var(--gray-dark);
+  }
+  
+  .card-row-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+}
+
+/* Em telas maiores, esconder os cards e mostrar tabelas */
+@media (min-width: 769px) {
+  .table-cards {
+    display: none;
+  }
+  
+  .dev-message {
+    display: none;
+  }
 }
 
 @media (max-width: 576px) {
@@ -745,3 +709,235 @@ tr:hover {
       font-size: 0.875rem;
   }
 }
+
+/* Estilos para as novas seções de dashboard */
+.dash-ti-content, .dash-colab-content {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.dash-metrics, .colab-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.metric-card {
+  background: var(--light);
+  padding: 1.25rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+}
+
+.metric-card h4 {
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+  margin-bottom: 0.5rem;
+}
+
+.metric-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 0.25rem;
+}
+
+.metric-change {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.metric-change.positive {
+  color: var(--success);
+}
+
+.metric-change.negative {
+  color: var(--danger);
+}
+
+.metric-change.neutral {
+  color: var(--gray);
+}
+
+.dash-chart {
+  background: var(--gray-light);
+  border-radius: var(--radius-sm);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.chart-placeholder {
+  text-align: center;
+  color: var(--gray);
+}
+
+.chart-placeholder i {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.colab-tasks {
+  margin-top: 1.5rem;
+}
+
+.task-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.task-list li {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--gray-light);
+  gap: 0.75rem;
+}
+
+.task-list li i {
+  font-size: 1.2rem;
+}
+
+.task-list li i.done {
+  color: var(--success);
+}
+
+.task-list li i.pending {
+  color: var(--warning);
+}
+
+.task-list li span {
+  flex: 1;
+}
+
+.task-list li small {
+  color: var(--gray);
+  font-size: 0.8rem;
+}
+
+/* Estilos para o dashboard completo do colaborador */
+.dash-colab-full {
+  display: grid;
+  gap: 2rem;
+}
+
+.full-metrics {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.metric-card.large {
+  padding: 1.5rem;
+}
+
+.metric-card.large .metric-value {
+  font-size: 2.5rem;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--gray-light);
+  border-radius: 4px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--success);
+  border-radius: 4px;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.full-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.chart-card {
+  background: var(--light);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.chart-card h4 {
+  margin-bottom: 1rem;
+}
+
+.priority-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.priority-badge.high {
+  background: rgba(239, 35, 60, 0.1);
+  color: var(--danger);
+}
+
+.priority-badge.medium {
+  background: rgba(248, 150, 30, 0.1);
+  color: var(--warning);
+}
+
+.priority-badge.low {
+  background: rgba(76, 201, 240, 0.1);
+  color: var(--success);
+}
+
+@media (max-width: 768px) {
+  .dash-ti-content, .dash-colab-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .dash-metrics, .colab-metrics {
+    grid-template-columns: 1fr;
+  }
+  
+  .metric-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .full-charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* [Estilos anteriores permanecem iguais] */
+
+/* Ajustes para os filtros de custos */
+.filters-container {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .filters-container {
+      flex-direction: column;
+      gap: 0.5rem;
+  }
+  
+  .filters-container .form-select,
+  .filters-container .btn {
+      width: 100%;
+  }
+  
+  .filters-container .btn {
+      justify-content: center;
+  }
+}
+
+/* Remover estilos específicos das dashboards removidas */
+/* Manter apenas os estilos gerais que podem ser úteis para outros componentes */
