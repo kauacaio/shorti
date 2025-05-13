@@ -31,7 +31,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
             
             // Redirecionar após login bem-sucedido
             setTimeout(() => {
-                window.location.href = '/shorti.html';
+                window.location.href = '/shorti/shorti.html';
             }, 800);
         } else {
             // Esconder loader e mostrar erro
